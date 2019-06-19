@@ -1,0 +1,30 @@
+t=2019-06-19T14:19:58+0800 lvl=info msg="Register() start for select" module=gateway
+t=2019-06-19T14:20:03+0800 lvl=info msg="Gateway ERegistry: UnRegister ok" module=gateway key=/etcdxchain/gateway/testRegistry/0.0.0.0:11011
+t=2019-06-19T14:20:06+0800 lvl=info msg="EResolve Build start" module=gateway
+t=2019-06-19T14:20:06+0800 lvl=info msg="watch start" module=gateway
+t=2019-06-19T14:20:06+0800 lvl=info msg="Register() start for select" module=gateway
+t=2019-06-19T14:20:07+0800 lvl=info msg=EResolver.Close module=gateway
+t=2019-06-19T14:21:04+0800 lvl=info msg="Register() start for select" module=gateway
+t=2019-06-19T14:21:09+0800 lvl=info msg="Gateway ERegistry: UnRegister ok" module=gateway key=/etcdxchain/gateway/testRegistry/0.0.0.0:11011
+t=2019-06-19T14:21:12+0800 lvl=info msg="EResolve Build start" module=gateway
+t=2019-06-19T14:21:12+0800 lvl=info msg="watch start" module=gateway
+t=2019-06-19T14:21:12+0800 lvl=info msg="Register() start for select" module=gateway
+t=2019-06-19T14:21:12+0800 lvl=info msg=EResolver.Close module=gateway
+t=2019-06-19T14:24:30+0800 lvl=info msg="Register() start for select" module=gateway
+t=2019-06-19T14:24:35+0800 lvl=info msg="Gateway ERegistry: UnRegister ok" module=gateway key=/etcdxchain/gateway/testRegistry/0.0.0.0:11011
+t=2019-06-19T14:24:38+0800 lvl=info msg="EResolve Build start" module=gateway
+t=2019-06-19T14:24:38+0800 lvl=info msg="watch start" module=gateway
+t=2019-06-19T14:24:38+0800 lvl=info msg="Register() start for select" module=gateway
+t=2019-06-19T14:24:48+0800 lvl=info msg="Gateway ERegistry: UnRegister ok" module=gateway key=/etcdxchain/gateway/testResolver/10.100.78.75:11000
+t=2019-06-19T14:24:48+0800 lvl=info msg=EResolver.Close module=gateway
+t=2019-06-19T14:31:27+0800 lvl=info msg="Register() start for select" module=gateway
+t=2019-06-19T14:31:32+0800 lvl=info msg="Gateway ERegistry: UnRegister ok" module=gateway key=/etcdxchain/gateway/testRegistry/0.0.0.0:11011
+t=2019-06-19T14:31:35+0800 lvl=info msg="EResolve Build start" module=gateway
+t=2019-06-19T14:31:35+0800 lvl=info msg="watch start" module=gateway
+t=2019-06-19T14:31:51+0800 lvl=info msg="Register() start for select" module=gateway
+t=2019-06-19T14:31:56+0800 lvl=info msg="Gateway ERegistry: UnRegister ok" module=gateway key=/etcdxchain/gateway/testRegistry/0.0.0.0:11011
+t=2019-06-19T14:31:59+0800 lvl=info msg="EResolve Build start" module=gateway
+t=2019-06-19T14:31:59+0800 lvl=info msg="watch start" module=gateway
+t=2019-06-19T14:31:59+0800 lvl=info msg="Register() start for select" module=gateway
+t=2019-06-19T14:32:09+0800 lvl=info msg="Gateway ERegistry: UnRegister ok" module=gateway key=/etcdxchain/gateway/testResolver/10.100.78.75:11000
+t=2019-06-19T14:32:09+0800 lvl=info msg=EResolver.Close module=gateway

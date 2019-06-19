@@ -9,14 +9,17 @@ import (
 	"os"
 	"os/signal"
 	"runtime/pprof"
+	"strings"
 	"syscall"
 
 	"github.com/spf13/pflag"
 	"github.com/syndtr/goleveldb/leveldb/errors"
+	etcd3 "go.etcd.io/etcd/clientv3"
 
 	"github.com/xuperchain/xuperunion/common/config"
 	"github.com/xuperchain/xuperunion/common/log"
 	"github.com/xuperchain/xuperunion/core"
+	re "github.com/xuperchain/xuperunion/gateway/etcd"
 	"github.com/xuperchain/xuperunion/p2pv2"
 	"github.com/xuperchain/xuperunion/server"
 )
@@ -70,6 +73,17 @@ func Start(cfg *config.NodeConfig) error {
 	// 启动挖矿结点
 	xcmg.Start()
 	go server.SerRun(&xcmg)
+
+	registry := &re.ERegistry{}
+	if cfg.GatewaySwitch {
+		registry, err = initRegistry(cfg, xlog)
+		if err != nil {
+			xlog.Error("New Register failed", "err", err)
+		}
+		// 服务注册
+		go registry.Register()
+	}
+
 	for {
 		select {
 		case <-sigc:
@@ -78,10 +92,16 @@ func Start(cfg *config.NodeConfig) error {
 		case <-xcmg.Quit:
 			xlog.Info("Got xcmg quit, start to shutting down, please wait...")
 			Stop(&xcmg)
+
+			if cfg.GatewaySwitch {
+				xlog.Info("Unregister start")
+				registry.UnRegister()
+				xlog.Info("Unregister done")
+			}
+
 			return nil
 		}
 	}
-	return nil
 }
 
 // Stop gracefully shut down, 各个模块实现自己需要优雅关闭的资源并在此处调用即可
@@ -100,6 +120,31 @@ func Stop(xchainmg *xchaincore.XChainMG) {
 	xchainmg.Log.Info("All modules have stopped!")
 	pprof.StopCPUProfile()
 	return
+}
+
+func initRegistry(cfg *config.NodeConfig, xlog log.Logger) (*re.ERegistry, error) {
+	port := strings.TrimPrefix(cfg.TCPServer.Port, ":")
+	ipAddr := re.GetServerIP()
+	xlog.Debug("Server addr", "ip", ipAddr, "port", port)
+	etcdAddr := []string{}
+	for _, addr := range strings.Split(cfg.EtcdClusterAddr, ",") {
+		etcdAddr = append(etcdAddr, addr)
+	}
+	etcdConfig := etcd3.Config{
+		Endpoints: etcdAddr,
+	}
+	registry, err := re.NewRegistry(
+		re.Input{
+			EtcdConfig: etcdConfig,
+			Prefix:     "gateway/xchaingateway",
+			Addr:       fmt.Sprintf("%v:%v", ipAddr, port),
+			TTL:        5,
+			Xlog:       xlog,
+		})
+	if err != nil {
+		return nil, err
+	}
+	return registry, nil
 }
 
 func main() {

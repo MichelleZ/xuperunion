@@ -42,6 +42,12 @@ function buildpkg() {
 buildpkg xchain-cli github.com/xuperchain/xuperunion/cmd/cli
 buildpkg xchain github.com/xuperchain/xuperunion/cmd/xchain
 go build -o dump_chain test/dump_chain.go
+# build gateway
+go build gateway/xchain_gateway.go
+go build gateway/xchain_register.go
+go build gateway/xchain_httpgw.go
+mkdir -p gw_output
+mv xchain_gateway xchain_register xchain_httpgw gw_output/
 
 # build plugins
 echo "OS:"${PLATFORM}
@@ -63,4 +69,5 @@ mv dump_chain ${output_dir}
 cp -rf  plugins ${output_dir}
 cp -rf data ${output_dir}
 cp -rf conf ${output_dir}
+cp -rf gw_output ${output_dir}
 mkdir -p ${output_dir}/data/blockchain

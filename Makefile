@@ -19,7 +19,7 @@ build:
 	PLATFORM=$(PLATFORM) ./build.sh
 
 test:
-	go test `go list ./... | egrep -v 'test'`
+	go test `go list ./... | egrep -v 'test' | egrep -v 'gateway'`
 	# test wasm sdk
 	GOOS=js GOARCH=wasm go build github.com/xuperchain/xuperunion/contractsdk/go/driver
 

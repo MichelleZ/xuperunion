@@ -25,7 +25,6 @@ require (
 	github.com/grpc-ecosystem/go-grpc-prometheus v1.2.0
 	github.com/grpc-ecosystem/grpc-gateway v1.8.5
 	github.com/hashicorp/golang-lru v0.5.0 // indirect
-	github.com/inconshreveable/mousetrap v1.0.0 // indirect
 	github.com/ipfs/go-cid v0.9.0 // indirect
 	github.com/ipfs/go-datastore v3.2.0+incompatible // indirect
 	github.com/ipfs/go-detect-race v1.0.1 // indirect
@@ -90,6 +89,7 @@ require (
 	github.com/spf13/pflag v1.0.3
 	github.com/spf13/viper v1.3.1
 	github.com/syndtr/goleveldb v0.0.0-20181127023241-353a9fca669c
+	github.com/tmc/grpc-websocket-proxy v0.0.0-20190109142713-0ad062ec5ee5 // indirect
 	github.com/whyrusleeping/base32 v0.0.0-20170828182744-c30ac30633cc // indirect
 	github.com/whyrusleeping/go-keyspace v0.0.0-20160322163242-5b898ac5add1 // indirect
 	github.com/whyrusleeping/go-notifier v0.0.0-20170827234753-097c5d47330f // indirect
@@ -101,6 +101,9 @@ require (
 	github.com/whyrusleeping/yamux v1.1.2 // indirect
 	github.com/xuperchain/go-libp2p-kad-dht v4.4.13-0.20190219145403-6d02cbb41795+incompatible
 	github.com/xuperchain/log15 v0.0.0-20190523125943-b2239a7cda1a
+	go.etcd.io/etcd v0.0.0-20190312190909-e1ca3b443494
+	go.uber.org/atomic v1.4.0 // indirect
+	go.uber.org/zap v1.10.0 // indirect
 	golang.org/x/crypto v0.0.0-20190103213133-ff983b9c42bc
 	golang.org/x/net v0.0.0-20190110200230-915654e7eabc
 	golang.org/x/time v0.0.0-20181108054448-85acf8d2951c // indirect

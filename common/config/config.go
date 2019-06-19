@@ -184,7 +184,7 @@ type NodeConfig struct {
 	Wasm            WasmConfig `yaml:"wasm,omitempty"`
 }
 
-// KernelConfig kerner config
+// KernelConfig kernel config
 type KernelConfig struct {
 	MinNewChainAmount string          `yaml:"minNewChainAmount,omitempty"`
 	NewChainWhiteList map[string]bool `yaml:"newChainWhiteList,omitempty"`
@@ -259,6 +259,9 @@ func (nc *NodeConfig) defaultNodeConfig() {
 			OptLevel: 0,
 		},
 	}
+
+	nc.EtcdClusterAddr = "http://10.100.78.75:2379"
+	nc.GatewaySwitch = false
 }
 
 // NewNodeConfig returns a config of a node
@@ -274,7 +277,7 @@ func newP2pConfigWithDefault() P2PConfig {
 		Port:            DefaultNetPort,
 		KeyPath:         DefaultNetKeyPath,
 		IsNat:           DefaultNetIsNat,
-		IsSecure:        DefaultNetIsNat,
+		IsSecure:        DefaultNetIsSecure,
 		IsHidden:        DefaultNetIsHidden,
 		MaxStreamLimits: DefaultMaxStreamLimits,
 		MaxMessageSize:  DefaultMaxMessageSize,
@@ -362,6 +365,9 @@ func (nc *NodeConfig) ApplyFlags(flags *pflag.FlagSet) {
 	flags.StringVar(&nc.MemProfile, "memprofile", nc.MemProfile, "used to store mem profile data --memprofile <pprof file>")
 
 	flags.StringVar(&nc.PluginConfPath, "pluginConfPath", nc.PluginConfPath, "used for config overwrite --pluginConfPath <plugin conf path>")
+
+	flags.StringVar(&nc.EtcdClusterAddr, "etcdClusterAddr", nc.EtcdClusterAddr, "used for config overwrite --etcdClusterAddr  <etcd cluster addr path>")
+	flags.BoolVar(&nc.GatewaySwitch, "gatewaySwitch", nc.GatewaySwitch, "used for config overwrite --gatewaySwitch <>")
 }
 
 // VisitAll print all config of node
