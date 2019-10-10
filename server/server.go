@@ -703,7 +703,7 @@ func (s *server) PreExecWithSelectUTXO(ctx context.Context, request *pb.PreExecW
 		fee = responses.Response.GetGasUsed()
 	}
 
-	totalAmount := request.GetTotalAmount() + fee
+	totalAmount := request.GetTotalAmount() + request.GetFee() + fee
 
 	if totalAmount > 0 {
 		utxoInput := &pb.UtxoInput{

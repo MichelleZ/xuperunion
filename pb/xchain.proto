@@ -901,9 +901,10 @@ message PreExecWithSelectUTXORequest {
   string bcname = 2;
   string address = 3;
   int64 totalAmount = 4;
+  int64 fee = 5;
   SignatureInfo signInfo = 6;
   bool needLock = 7;
-  InvokeRPCRequest request = 5;
+  InvokeRPCRequest request = 8;
 }
 
 // PreExecWithSelectUTXOResponse preExec + selectUtxo for response
